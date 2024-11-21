@@ -42,7 +42,7 @@ main {
     padding: 20px;
 }
 
-/* Навигация с ползунком */
+/* Навигация */
 nav {
     flex: 1;
     max-width: 200px;
@@ -50,9 +50,9 @@ nav {
     background-color: #fff;
     padding: 10px;
     border-right: 1px solid #ccc;
-    max-height: 600px; /* Максимальная высота навигации */
-    overflow-y: auto; /* Вертикальный скролл */
-    overflow-x: hidden; /* Отключаем горизонтальный скролл */
+    max-height: 600px;
+    overflow-y: auto; 
+    overflow-x: hidden; 
 }
 
 nav h2 {
