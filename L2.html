@@ -12,20 +12,69 @@
             <a href="index.html"><img src="image/logo.png" alt="Logo"></a>
         </div>
         <div class="header-title">
-            <h1>Nizar Naimi | Network Engineer (NetOps)</h1>
+            <h1>Labs | Routing & Switch | <a href="L2.html">L2</a></h1>
             <p>
-                Mail |
-                <a href="mailto:nizarnaimi@yandex.ru">nizarnaimi@yandex.ru</a><br>
+               | L7 |<br>
+               | L6 |<br>
+               | L5 |<br>
+               | L4 |<br>
+               | L3 |<br>
+               <b> | L2 | -> Data Link</b><br>
+               | L1 |<br>
             </p>
         </div>
     </header>
     <main>
         <article>
             <p>
+                Схема:<br>
+                <img src="image/L2-1.png" alt="net-diagram"><br>
+                Дано: <br>
+                2 машины под управлением ubuntu 22.04 тут мы
+                заинтересованные в пакете iproute2
+                и 4 VPC, чтобы убедиться, что все работает.
+
+                <table border style="width:90%">
+                    <tr >
+                        <td><b>Hosts</b></td>
+                        <td><b>IP</b></td>
+                        <td><b>VLAN</b></td>
+                    </tr>
+                    <tr>
+                        <td>lin-sw-1</td>
+                        <td>10.0.99.10/24</td>
+                        <td>99</td>
+                    </tr>
+                    <tr>
+                        <td>lin-sw-2</td>
+                        <td>10.0.99.20/24</td>
+                        <td>99</td>
+                    </tr>
+                    <tr>
+                        <td>VPC-1</td>
+                        <td>10.0.20.10/24</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>VPC-2</td>
+                        <td>10.0.5.10/24</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>VPC-3</td>
+                        <td>10.0.20.20/24</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>VPC-4</td>
+                        <td>10.0.5.20/24</td>
+                        <td>5</td>
+                    </tr>
+                </table>
 
             </p>
             <pre class="diagram">
-                coming soon!!!!)
+               
             </pre>
         </article>
     </main>
