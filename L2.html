@@ -74,8 +74,79 @@
 
             </p>
             <pre class="diagram">
-               
+            #lin-sw-1
+             ip link add name swbr1 type bridge vlan_filtering 1 vlan_default_pvid 0
+             ip link set swbr1 up
+
+             ip link set ens4 master swbr1
+             ip link set ens4 up
+             ip link set ens5 master swbr1
+             ip link set ens5 up
+             ip link set ens6 master swbr1 
+             ip link set ens6 up 
+
+             bridge vlan add vid 20 dev ens4 pvid untagged
+             bridge vlan add vid 5 dev ens5 pvid untagged
+             bridge vlan add vid 99 dev ens6 pvid untagged
+             bridge vlan add vid 20 dev ens6
+             bridge vlan add vid 5 dev ens6
+
+             ip link add link swbr1 name swbr1.99 type vlan id 99
+             bridge vlan add vid 99 dev swbr1 self
+             ip link set swbr1.99 up
+             ip addr add 10.0.99.10/24 dev swbr1.99
+
+
+root@lin-sw-1:~# bridge vlan
+port              vlan-id
+ens4              20 PVID Egress Untagged
+ens5              5 PVID Egress Untagged
+ens6              5
+                  20
+                  99 PVID Egress Untagged
+
             </pre>
+            <p>
+            <code>bridge vlan add vid 20 dev ens4 pvid untagged</code> или <code>bridge vlan add vid 5 dev ens5 pvid untagged</code>
+                это аналогично <code><br>switchport mode access <br>
+                switchport access vlan 5 или 20<br>
+            </code> 
+            где <code>bridge vlan add vid 20 dev ens6 -> switchport trunk allow vlan 20</code><br>
+            Аналогично для lin-sw-2
+          </p>
+          <pre class="diagram">
+            #lin-sw-2
+             ip link add name swbr2 type bridge vlan_filtering 1 vlan_default_pvid 0
+             ip link set swbr2 up
+
+             ip link set ens4 master swbr2
+             ip link set ens4 up
+             ip link set ens5 master swbr2
+             ip link set ens5 up
+             ip link set ens6 master swbr2 
+             ip link set ens6 up 
+
+             bridge vlan add vid 20 dev ens4 pvid untagged
+             bridge vlan add vid 5 dev ens5 pvid untagged
+             bridge vlan add vid 99 dev ens6 pvid untagged
+             bridge vlan add vid 20 dev ens6
+             bridge vlan add vid 5 dev ens6
+             
+             ip link add link swbr2 name swbr2.99 type vlan id 99
+             bridge vlan add vid 99 dev swbr2 self
+             ip link set swbr2.99 up
+             ip addr add 10.0.99.20/24 dev swbr2.99
+
+root@lin-sw-2:~# bridge vlan
+port              vlan-id
+ens4              20 PVID Egress Untagged
+ens5              5 PVID Egress Untagged
+ens6              5
+                  20
+                  99 PVID Egress Untagged
+
+            </pre>
+
         </article>
     </main>
 </body>
